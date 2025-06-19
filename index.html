@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+body {
+  background: #fefdfb;
+  color: #3a3a3a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  width: 110%;
+  background: #fefdfb;
+  border-radius: 40px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+  padding: 32px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.camera-icon {
+  text-align: right;
+  margin-bottom: -40px;
+  font-size: 28px;
+  cursor: ;
+  display: flex;
+  justify-content: flex-end;
+  color: #d6a77a;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 997;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 260px;
+  height: 100%;
+  background: #fff4eb;
+  box-shadow: -4px 0 18px rgba(0, 0, 0, 0.05);
+  padding: 30px 20px;
+  transition: right 0.4s ease;
+  z-index: 998;
+  border-left: 1px solid #f1e9e0;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #6a564a;
+}
+
+.sidebar a {
+  display: block;
+  margin-bottom: 14px;
+  text-decoration: none;
+  color: #6a564a;
+  font-weight: 600;
+  background: #fef0e6;
+  padding: 10px 14px;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background: #f4e3db;
+  transform: translateX(5px);
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 18px;
+  color: #2d2d2d;
+}
+
+p.description {
+  font-size: 16px;
+  color: #796e67;
+  margin-bottom: 28px;
+}
+
+.section-title {
+  margin-top: 36px;
+  font-size: 20px;
+  color: #555;
+  font-weight: 600;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.link-item {
+  background: #fdf6f2;
+  color: #444;
+  padding: 14px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #f0e4dd;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.link-item:hover {
+  background: #f3e8e2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+footer {
+  margin-top: 32px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+#downloadsPage {
+  max-width: 500px;
+  width: 100%;
+  background: #fffdfa;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  padding: 32px;
+  text-align: center;
+  display: none;
+}
+
+#downloadsPage button {
+  margin-top: 24px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #f3ece8;
+  font-weight: 600;
+  cursor: pointer;
+  color: #4a4a4a;
+  transition: background 0.3s ease;
+}
+
+#downloadsPage button:hover {
+  background: #e8dfda;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .link-item {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
+}
+</style>
+</head>
+<body>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <h2>✨ Quick Links</h2>
+  <a href="#" onclick="showSection('mainContainer')">🏠 Home</a>
+  <a href="#" onclick="showSection('downloadsPage')">📥 Downloads</a>
+  <a href="#" onclick="showSection('pagesSection')">📄 Pages</a>
+  <a href="#" onclick="showSection('socialSection')">🔗 Social Presence</a>
+
+</div>
+  <!-- Main Content -->
+  <div class="container" id="mainContainer">
+    <div class="camera-icon" onclick="toggleSidebar()">🌿</div>
+
+    <h1>My Created Pages</h1>
+    <p class="description">Discover my work, downloads, and digital presence, designed with passion and purpose.</p>
+
+    <div class="section-title">🔗 Social Presence</div>
+
+<div class="link-list">
+
+  <!-- Social Media -->
+  <a href="https://www.instagram.com/___atharv_ava_?igsh=ZXBib2x3bmtranVx" class="link-item" target="_blank">
+    📸 Instagram – 𝐴𝑡ℎ𝑎𝑟𝑣˚₊·— ͟͞͞♡
+  </a>
+  <a href="https://www.facebook.com/atharv.siddhu" class="link-item" target="_blank">
+    📘 Facebook – Atharv Siddhu
+  </a>
+  <a href="https://www.snapchat.com/add/atharvjh?share_id=Xcs-L9hCN-E&locale=en-IN" class="link-item" target="_blank">
+    👻 Snapchat – Atharv Roy~
+  </a>
+  <a href="https://pin.it/2gCqx79Mc" class="link-item" target="_blank">
+    📌 Pinterest – ElysioX
+  </a>
+  <a href="https://www.threads.net/@___atharv_ava_" class="link-item" target="_blank">
+    🧵 Threads – 𝐴𝑡ℎ𝑎𝑟𝑣˚₊·— ͟͞͞♡
+  </a>
+  <a href="https://t.me/Atharv_ElysionX" class="link-item" target="_blank">
+    📨 Telegram – 𝐴𝑡ℎ𝑎𝑟𝑣˚₊·— ͟͞͞♡
+  </a>
+  <a href="https://x.com/AtharvNova?t=adBaPRxztcBhaVAyEtWhWg&s=09" class="link-item" target="_blank">
+    🐦 Twitter/X – Atharv Roy
+  </a>
+  <a href="https://www.reddit.com/u/Still-Air1/s/f6SaBkZw2w" class="link-item" target="_blank">
+    👽 Reddit – Atharv
+  </a>
+  <a href="https://i.delta.chat/#D1179C4602AF1FF5D72026F7321098AB84A20CA2&a=d16icplez%40arcanechat.me&n=Atharv%20Roy&i=qst0woUWy4XnkyOaog1lBaHa&s=vZaap3gUSPrxf_xiVYYR29Lq" class="link-item" target="_blank">
+    📥 DeltaChat – Atharv Roy
+  </a>
+  <a href="https://ngl.link/sayhii40344" class="link-item" target="_blank">
+    💌 NGL – Atharv
+  </a>
+
+  <!-- Professional / Content -->
+  <a href="https://www.linkedin.com/in/atharv-roy-60532936b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="link-item" target="_blank">
+    💼 LinkedIn – Atharv Roy
+  </a>
+  <a href="https://youtube.com/@atharv-v1r" class="link-item" target="_blank">
+    📺 YouTube – Atharv
+  </a>
+
+</div>
+
+<div style="display: none;">
+
+  Ei div ta ar kaj korbe na, kintu code-e thakbe.
+    <div class="section-title">📄 Pages</div>
+    <div class="link-list">
+<a href="https://yourdomain.com/about" class="link-item" target="_blank">👤 About Me – Who I Am</a>
+
+<a href="https://yourdomain.com/cv" class="link-item" target="_blank">📃 Resume/CV – Download My Profile</a>
+
+<a href="https://bit.ly/atharv-24" class="link-item" target="_blank">🛠️ Projects – Things I’ve Built</a>
+
+<a href="https://yourdomain.com/certifications" class="link-item" target="_blank">🎓 Certifications – Courses & Skills</a>
+
+<a href="https://yourdomain.com/clients" class="link-item" target="_blank">🤝 Clients & Testimonials</a>
+
+<a href="https://yourdomain.com/wallpapers" class="link-item" target="_blank">🖼️ Wallpapers – Free Downloads</a>
+
+<a href="https://yourdomain.com/journal" class="link-item" target="_blank">📔 Daily Journal – Thoughts & Reflections</a>
+
+<a href="https://yourdomain.com/contact" class="link-item" target="_blank">📬 Contact – Let’s Connect</a>
+
+<a href="https://yourdomain.com/now" class="link-item" target="_blank">🕰️ What I'm Doing Now – /now page</a>
+
+<a href="https://yourdomain.com/favorites" class="link-item" target="_blank">🌈 Favorites – Books, Apps & Music</a>
+    </div>
+    <div class="section-title">📥 Downloads</div>
+    <div class="link-list">
+      <a href="https://spoti.plus" class="link-item" target="_blank">🎧 Spotify Premium APK</a>
+      <a href="https://ymusic.io" class="link-item" target="_blank">🎶 YMusic – Music Downloader</a>
+      <a href="https://www.snaptube.com/" class="link-item" target="_blank">📺 SnapTube – Video & Music Downloader</a>
+    </div>
+
+</div>
+
+    <footer>
+      &copy; 2025 Atharv Roy. All rights reserved.
+    </footer>
+  </div>
+
+
+
+  <!-- Downloads Page -->
+  <div id="downloadsPage">
+    <h2>📥 Downloads</h2>
+    <div class="link-list">
+      <a href="https://spoti.plus" class="link-item" target="_blank">🎧 Spotify Premium APK</a>
+      <a href="https://ymusic.io" class="link-item" target="_blank">🎶 YMusic – Downloader</a>
+      <a href="https://www.snaptube.com/" class="link-item" target="_blank">📺 SnapTube – Downloader</a>
+    </div>
+    <button onclick="goBack()">🔙 Back</button>
+  </div>
+<!-- Extra Pages Section -->
+<div id="pagesSection" style="display: none;" class="container">
+  <h2>📄 Pages</h2>
+  <div class="link-list">
+    <a href="https://yourdomain.com/about" class="link-item" target="_blank">👤 About Me – Who I Am</a>
+    <a href="https://yourdomain.com/cv" class="link-item" target="_blank">📃 Resume/CV – Download My Profile</a>
+    <a href="https://bit.ly/atharv-24" class="link-item" target="_blank">🛠️ Projects – Things I’ve Built</a>
+    <a href="https://yourdomain.com/certifications" class="link-item" target="_blank">🎓 Certifications – Courses & Skills</a>
+    <a href="https://yourdomain.com/clients" class="link-item" target="_blank">🤝 Clients & Testimonials</a>
+    <a href="https://yourdomain.com/wallpapers" class="link-item" target="_blank">🖼️ Wallpapers – Free Downloads</a>
+    <a href="https://yourdomain.com/journal" class="link-item" target="_blank">📔 Daily Journal – Thoughts & Reflections</a>
+    <a href="https://yourdomain.com/contact" class="link-item" target="_blank">📬 Contact – Let’s Connect</a>
+    <a href="https://yourdomain.com/now" class="link-item" target="_blank">🕰️ What I'm Doing Now – /now page</a>
+    <a href="https://yourdomain.com/favorites" class="link-item" target="_blank">🌈 Favorites – Books, Apps & Music</a>
+    <button onclick="goBack()">🔙 Back</button>
+  </div>
+</div>
+
+<!-- Social Section -->
+<div id="socialSection" style="display: none;" class="container">
+  <h2>🔗 Social Presence</h2>
+  <div class="link-list">
+    <a href="https://www.instagram.com/___atharv_ava_?igsh=ZXBib2x3bmtranVx" class="link-item" target="_blank">📸 Instagram – 𝐴𝑡ℎ𝑎𝑟𝑣˚₊·— ͟͞͞♡</a>
+    <a href="https://www.facebook.com/atharv.siddhu" class="link-item" target="_blank">📘 Facebook – Atharv Siddhu</a>
+    <a href="https://www.snapchat.com/add/atharvjh?share_id=Xcs-L9hCN-E&locale=en-IN" class="link-item" target="_blank">👻 Snapchat – Atharv Ava</a>
+    <a href="https://pin.it/2gCqx79Mc" class="link-item" target="_blank">📌 Pinterest – ElysioX</a>
+    <a href="https://www.threads.net/@___atharv_ava_" class="link-item" target="_blank">🧵 Threads – 𝐴𝑡ℎ𝑎𝑟𝑣˚₊·— ͟͞͞♡</a>
+    <a href="https://t.me/Atharv_ElysionX" class="link-item" target="_blank">📨 Telegram – 𝐴𝑡ℎ𝑎𝑟𝑣˚₊·— ͟͞͞♡</a>
+    <a href="https://x.com/AtharvNova?t=adBaPRxztcBhaVAyEtWhWg&s=09" class="link-item" target="_blank">🐦 Twitter/X – Atharv Roy</a>
+    <a href="https://www.linkedin.com/in/atharv-roy-60532936b" class="link-item" target="_blank">💼 LinkedIn – Atharv Roy</a>
+    <a href="https://youtube.com/@atharv-v1r" class="link-item" target="_blank">📺 YouTube – Atharv</a>
+    <button onclick="goBack()">🔙 Back</button>
+  </div>
+</div>
+  <!-- Sidebar Toggle Script -->
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+    document.getElementById('sidebarOverlay').classList.toggle('active');
+  }
+
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('active');
+    document.getElementById('sidebarOverlay').classList.remove('active');
+  }
+
+  function showSection(sectionId) {
+    closeSidebar();
+    const sections = ['mainContainer', 'downloadsPage', 'pagesSection', 'socialSection'];
+    sections.forEach(id => {
+      document.getElementById(id).style.display = (id === sectionId) ? 'block' : 'none';
+    });
+  }
+
+  function goBack() {
+    showSection('mainContainer');
+  }
+</script>
+</body>
+</html>
